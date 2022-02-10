@@ -13,8 +13,8 @@
 				"-Werror",
 				"*.c",
 				"-o",
-				"${fileDirname}/client"
-				// "${fileDirname}/${fileBasenameNoExtension}"
+				// "${fileDirname}/client"
+				"${fileDirname}/${fileBasenameNoExtension}"
 			],
 			"options": {
 				"cwd": "${fileDirname}"
