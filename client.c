@@ -26,14 +26,17 @@ int main(int argc, char **argv)
 
 	if(argc != 2)
 	{
-		ft_printf("Wrong ARGUMENT\n");
+		// ft_printf("Wrong ARGUMENT\n");
+		printf("Wrong ARGUMENT\n");
 		return (1);
 	}
 
-	pid = ft_atoi(argv[1]);
+	// pid = ft_atoi(argv[1]);
+	pid = atoi(argv[1]);
 	if (!pid)
 	{
-		ft_printf("It is not a PID number\n");
+		// ft_printf("It is not a PID number\n");
+		printf("It is not a PID number\n");
 		// perror("It is not a PID number\n");
 		return (1);
 	}

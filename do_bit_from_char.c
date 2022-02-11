@@ -16,12 +16,10 @@ void do_bit_from_char(int byte, int pid)
 {
 	int mask;
 	int result;
-	int ms;
 	int us;
 	int i;
 
-	ms = 1;
-	us = ms * 1000;
+	us = 50;
 
 	mask = MASK_BIT_7;
 	i = 7;
