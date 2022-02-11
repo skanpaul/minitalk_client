@@ -19,8 +19,8 @@
 /* ************************************************************************** */
 typedef struct s_data
 {
-	struct sigaction sa_client;
-	struct sigaction sa_old_client;
+	struct sigaction sa;
+	struct sigaction sa_old;
 }	t_data;
 /* ************************************************************************** */
 
