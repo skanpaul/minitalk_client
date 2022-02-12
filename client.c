@@ -17,7 +17,6 @@ t_data data;
 void handler_sig_usr(int sig_c);
 
 /* ************************************************************************** */
-// int main(void)
 int main(int argc, char **argv)
 {
 	char byte_c;
@@ -26,18 +25,14 @@ int main(int argc, char **argv)
 
 	if(argc != 2)
 	{
-		// ft_printf("Wrong ARGUMENT\n");
 		printf("Wrong ARGUMENT\n");
 		return (1);
 	}
 
-	// pid = ft_atoi(argv[1]);
 	pid = atoi(argv[1]);
 	if (!pid)
 	{
-		// ft_printf("It is not a PID number\n");
 		printf("It is not a PID number\n");
-		// perror("It is not a PID number\n");
 		return (1);
 	}
 
@@ -46,12 +41,6 @@ int main(int argc, char **argv)
 
 	do_bit_from_char(byte, pid);
 
-	// data.sa.sa_handler = &handler_sig_usr;
-	// data.sa.sa_flags = SA_RESTART;
-	// data.sa.sa_mask = 0xFFFFFFFF;  // A VERIFIER LE COMPORTEMENT CORRECTE OU PAS
-	// sigaction(SIGUSR1, &data.sa, 0);
-	// sigaction(SIGUSR2, &data.sa, 0);
-	// while (1) ;
 	return (0);
 }
 

@@ -19,17 +19,13 @@ void do_bit_from_char(int byte, int pid)
 	int us;
 	int i;
 
-	us = 50;
+	us = 1000;
 
 	mask = MASK_BIT_7;
 	i = 7;
 	while (i >= 0)
 	{
 		result = byte & mask;
-		// if (!result)
-		// 	printf("valeur 0\n");
-		// else		 
-		// 	printf("valeur 1\n");
 		if (!result)
 		{
 			kill(pid, SIGUSR1);
