@@ -13,6 +13,7 @@
 # define CLIENT_H
 /* ************************************************************************** */
 // # include "libft.h"
+/* ************************************************************************** */
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -31,11 +32,15 @@
 typedef struct s_data
 {
 	struct sigaction sa;
-	struct sigaction sa_old;
+	// struct sigaction sa_old;
+	unsigned int		ms;
+	unsigned int		us;
+	int		pid_s;
 }	t_data;
 /* ************************************************************************** */
-
-void	do_bit_from_char(int byte, int pid);
+void	init_data(t_data *data);
+void	send_string(char *str, int pid, t_data *data);
+void	send_char(int byte, int pid, t_data *data);
 
 /* ************************************************************************** */
 #endif

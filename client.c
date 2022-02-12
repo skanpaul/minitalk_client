@@ -19,11 +19,11 @@ void handler_sig_usr(int sig_c);
 /* ************************************************************************** */
 int main(int argc, char **argv)
 {
-	char byte_c;
-	int byte;
+	// char byte_c;
+	// int byte;
 	int pid;
 
-	if(argc != 2)
+	if(argc != 3)
 	{
 		printf("Wrong ARGUMENT\n");
 		return (1);
@@ -36,10 +36,11 @@ int main(int argc, char **argv)
 		return (1);
 	}
 
-	byte_c = 'A';
-	byte = (int)byte_c;
+	send_string(argv[2], pid, &data);
 
-	do_bit_from_char(byte, pid);
+	// byte_c = 'A';
+	// byte = (int)byte_c;
+	// send_char(byte, pid, &data);
 
 	return (0);
 }

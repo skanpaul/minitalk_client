@@ -1,9 +1,11 @@
 {
 	"files.associations": {
-		"signal.h": "c"
+		"signal.h": "c",
+		"client.h": "c"
 	},
 	"files.exclude": {
 		"libft.*": true,
 		"*.o": true
-	}
+	},
+	"explorer.sortOrder": "type"
 }

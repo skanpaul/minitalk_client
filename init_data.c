@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_bit_from_char.c                                 :+:      :+:    :+:   */
+/*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ski <marvin@42lausanne.ch>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,34 +12,9 @@
 #include "client.h"
 
 /* ************************************************************************** */
-void do_bit_from_char(int byte, int pid)
+void init_data(t_data *data)
 {
-	int mask;
-	int result;
-	int us;
-	int i;
-
-	us = 1000;
-
-	mask = MASK_BIT_7;
-	i = 7;
-	while (i >= 0)
-	{
-		result = byte & mask;
-		if (!result)
-		{
-			kill(pid, SIGUSR1);
-			usleep(us);
-		}
-		else
-		{
-			kill(pid, SIGUSR2);
-			usleep(us);
-		}		 
-		mask >>= 1;
-		i--;
-	}
-
-	return ;
+    data->ms = 5;
+    data->us = data->ms * 1000;
+    return ;
 }
-
