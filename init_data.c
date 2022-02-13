@@ -12,14 +12,18 @@
 #include "client.h"
 
 /* ************************************************************************** */
-static void reset_str_int(char *str_int);
+// static void reset_str_int(char *str_int);
 
 /* ************************************************************************** */
 void init_data(t_data *data)
 {
+	/* Configuration STRUCT SIGACTION ---------------- */
+	data->sa.sa_handler = &handler_sig_usr;
+	// data->sa.sa_flags = SA_RESTART;
+    sigaddset(&data->sa.sa_mask, SIGUSR1);
+    sigaddset(&data->sa.sa_mask, SIGUSR2);
+	
 	data->pid_client = getpid();
-	reset_str_int(data->str_pid_client);
-	reset_str_int(data->str_size_stream);
 
 
     data->us = 50;
@@ -27,15 +31,4 @@ void init_data(t_data *data)
 }
 
 /* ************************************************************************** */
-static void reset_str_int(char *str_int)
-{
-	int i;
 
-	i = 0;
-	while (i < 5)
-	{
-		str_int[i] = '\0';
-		i++;
-	}
-	return ;
-}

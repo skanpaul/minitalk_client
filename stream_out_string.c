@@ -12,7 +12,7 @@
 #include "client.h"
 
 /* ************************************************************************** */
-void	stream_out_string(char *str, int pid, t_data *data)
+void	stream_out_string(char *str, int pid_server, t_data *data)
 {
     int len;
     int i;
@@ -21,7 +21,7 @@ void	stream_out_string(char *str, int pid, t_data *data)
     i = 0;
     while (i < len)
     {
-        stream_out_char((int)str[i], pid, data);
+        stream_out_char((int)str[i], pid_server, data);
         i++;
     }
     // send_char(str[i], pid, data);

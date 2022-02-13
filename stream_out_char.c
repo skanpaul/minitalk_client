@@ -29,18 +29,18 @@ void stream_out_char(int byte, int pid_server, t_data *data)
 		if (!result)
 		{
 			kill(pid_server, SIGUSR1);
-			printf("0");
+			// printf("0");
 		}
 		else
 		{
 			kill(pid_server, SIGUSR2);
-			printf("1");
+			// printf("1");
 		}	
 		usleep(us);
 		mask >>= 1;
 		i--;
 	}
-	printf("\n");
+	// printf("\n");
 
 	return ;
 }
