@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_bit_from_char.c                                 :+:      :+:    :+:   */
+/*   stream_out_string.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ski <marvin@42lausanne.ch>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,36 +12,17 @@
 #include "client.h"
 
 /* ************************************************************************** */
-void send_char(int byte, int pid_server, t_data *data)
+void	stream_out_string(char *str, int pid, t_data *data)
 {
-	int mask;
-	int result;
-	int i;
-	int us;
+    int len;
+    int i;
 
-	us = data->us;
-
-	mask = MASK_BIT_7;
-	i = 7;
-	while (i >= 0)
-	{
-		result = byte & mask;
-		if (!result)
-		{
-			kill(pid_server, SIGUSR1);
-			printf("0");
-		}
-		else
-		{
-			kill(pid_server, SIGUSR2);
-			printf("1");
-		}	
-		usleep(us);
-		mask >>= 1;
-		i--;
-	}
-	printf("\n");
-
-	return ;
+    len = ft_strlen(str);
+    i = 0;
+    while (i < len)
+    {
+        stream_out_char((int)str[i], pid, data);
+        i++;
+    }
+    // send_char(str[i], pid, data);
 }
-/* ************************************************************************** */

@@ -32,18 +32,16 @@ int main(int argc, char **argv)
 	}
 	/* INITIALISATION -------------------------------- */
 	init_data(&data);
-	data.size_stream = (unsigned int)ft_strlen(argv[2]);
+	data.size_stream = ft_strlen(argv[2]);
 
 	/* ENVOI DE DONNEES ------------------------------ */
 	printf("PID client: %u\n", data.pid_client);
-	printf("PID client: %#010x\n", data.pid_client);
+	// printf("PID client: %#010x\n", data.pid_client);
+	printf("Size Stream: %u\n", data.size_stream);
+	// printf("Size Stream: %#010x\n", data.size_stream);
 
-	// printf("Size Stream: %u\n", data.size_stream);
-
-	send_pid_client(data.pid_client, &data);
-	// send_size_stream(data.size_stream, &data);
-	// send_string(argv[2], data.pid_server, &data);
-
+	stream_out_int(data.pid_client, &data);
+	stream_out_int(data.size_stream, &data);
 
 	/* ----------------------------------------------- */
 	return (0);

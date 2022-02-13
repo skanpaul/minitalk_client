@@ -45,11 +45,9 @@ typedef struct s_data
 /* ************************************************************************** */
 void	init_data(t_data *data);
 
-void	send_pid_client(int pid_client, t_data *data);
-void	send_size_stream(unsigned int size_stream, t_data *data);
-
-void	send_string(char *str, int pid, t_data *data);
-void	send_char(int byte, int pid_server, t_data *data);
+void	stream_out_char(int byte, int pid_server, t_data *data);
+void	stream_out_int(int int_value, t_data *data);
+void	stream_out_string(char *str, int pid, t_data *data);
 
 /* ************************************************************************** */
 #endif

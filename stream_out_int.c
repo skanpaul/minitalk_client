@@ -1,28 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   send_string.c                                      :+:      :+:    :+:   */
+/*   stream_out_int.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ski <marvin@42lausanne.ch>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 18:14:42 by ski               #+#    #+#             */
-/*   Updated: 2022/02/11 18:14:44 by ski              ###   ########.fr       */
+/*   Created: 2022/02/13 15:34:51 by ski               #+#    #+#             */
+/*   Updated: 2022/02/13 15:34:54 by ski              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "client.h"
 
 /* ************************************************************************** */
-void	send_string(char *str, int pid, t_data *data)
+void	stream_out_int(int int_value, t_data *data)
 {
-    int len;
-    int i;
+	int temp;
 
-    len = ft_strlen(str);
-    i = 0;
-    while (i < len)
-    {
-        send_char((int)str[i], pid, data);
-        i++;
-    }
-    // send_char(str[i], pid, data);
+	temp = int_value;
+	temp >>= 24;
+	temp = temp & 0x000000FF;
+	stream_out_char(temp, data->pid_server, data);
+
+	temp = int_value;
+	temp >>= 16;
+	temp = temp & 0x000000FF;
+	stream_out_char(temp, data->pid_server, data);
+
+	temp = int_value;
+	temp >>= 8;
+	temp = temp & 0x000000FF;
+	stream_out_char(temp, data->pid_server, data);
+
+	temp = int_value;
+	temp >>= 0;
+	temp = temp & 0x000000FF;
+	stream_out_char(temp, data->pid_server, data);	
+
+	return ;
 }
+
+
