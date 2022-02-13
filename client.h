@@ -12,7 +12,7 @@
 #ifndef CLIENT_H
 # define CLIENT_H
 /* ************************************************************************** */
-// # include "libft.h"
+# include "libft.h"
 /* ************************************************************************** */
 # include <stdio.h>
 # include <stdlib.h>
@@ -31,16 +31,25 @@
 /* ************************************************************************** */
 typedef struct s_data
 {
-	struct sigaction sa;
-	// struct sigaction sa_old;
-	unsigned int		ms;
+	struct sigaction	sa;
+	unsigned int		pid_server;
+
+	unsigned int		pid_client;
+	char 				str_pid_client[5];
+
+	unsigned int		size_stream;
+	char 				str_size_stream[5];
+
 	unsigned int		us;
-	int		pid_s;
 }	t_data;
 /* ************************************************************************** */
 void	init_data(t_data *data);
+
+void	send_pid_client(int pid_client, t_data *data);
+void	send_size_stream(unsigned int size_stream, t_data *data);
+
 void	send_string(char *str, int pid, t_data *data);
-void	send_char(int byte, int pid, t_data *data);
+void	send_char(int byte, int pid_server, t_data *data);
 
 /* ************************************************************************** */
 #endif

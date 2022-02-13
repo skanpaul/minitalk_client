@@ -1,47 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_bit_from_char.c                                 :+:      :+:    :+:   */
+/*   send_pid_client.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ski <marvin@42lausanne.ch>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 18:14:42 by ski               #+#    #+#             */
-/*   Updated: 2022/02/11 18:14:44 by ski              ###   ########.fr       */
+/*   Created: 2022/02/13 10:34:04 by ski               #+#    #+#             */
+/*   Updated: 2022/02/13 10:34:11 by ski              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "client.h"
 
 /* ************************************************************************** */
-void send_char(int byte, int pid_server, t_data *data)
+void	send_pid_client(int pid_client, t_data *data)
 {
-	int mask;
-	int result;
-	int i;
-	int us;
+		int temp;
 
-	us = data->us;
+	temp = pid_client;
+	temp >>= 24;
+	temp = temp & 0x000000FF;
+	send_char(temp, data->pid_server, data);
 
-	mask = MASK_BIT_7;
-	i = 7;
-	while (i >= 0)
-	{
-		result = byte & mask;
-		if (!result)
-		{
-			kill(pid_server, SIGUSR1);
-			printf("0");
-		}
-		else
-		{
-			kill(pid_server, SIGUSR2);
-			printf("1");
-		}	
-		usleep(us);
-		mask >>= 1;
-		i--;
-	}
-	printf("\n");
+	temp = pid_client;
+	temp >>= 16;
+	temp = temp & 0x000000FF;
+	send_char(temp, data->pid_server, data);
+
+	temp = pid_client;
+	temp >>= 8;
+	temp = temp & 0x000000FF;
+	send_char(temp, data->pid_server, data);
+
+	temp = pid_client;
+	temp >>= 0;
+	temp = temp & 0x000000FF;
+	send_char(temp, data->pid_server, data);	
 
 	return ;
 }
-/* ************************************************************************** */

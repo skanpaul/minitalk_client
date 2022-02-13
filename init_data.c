@@ -12,9 +12,30 @@
 #include "client.h"
 
 /* ************************************************************************** */
+static void reset_str_int(char *str_int);
+
+/* ************************************************************************** */
 void init_data(t_data *data)
 {
-    data->ms = 5;
-    data->us = data->ms * 1000;
+	data->pid_client = getpid();
+	reset_str_int(data->str_pid_client);
+	reset_str_int(data->str_size_stream);
+
+
+    data->us = 50;
     return ;
+}
+
+/* ************************************************************************** */
+static void reset_str_int(char *str_int)
+{
+	int i;
+
+	i = 0;
+	while (i < 5)
+	{
+		str_int[i] = '\0';
+		i++;
+	}
+	return ;
 }

@@ -8,15 +8,14 @@ LIBFTPATH = .
 LIBFTNAME = ft
 
 HD		= $(wildcard *.h)
-
 SRC		= $(wildcard *.c)
 OBJ		= $(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ) $(HD)
-	$(CC) $(CFLAG) $(OBJ) -o $(NAME)
-# $(CC) $(CFLAG) -L$(LIBFTPATH) -l$(LIBFTNAME) $(OBJ) -o $(NAME)
+# $(CC) $(CFLAG) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAG) -L$(LIBFTPATH) -l$(LIBFTNAME) $(OBJ) -o $(NAME)
 
 clean:
 	$(RM) $(OBJ)

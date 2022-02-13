@@ -19,29 +19,33 @@ void handler_sig_usr(int sig_c);
 /* ************************************************************************** */
 int main(int argc, char **argv)
 {
-	// char byte_c;
-	// int byte;
-	int pid;
-
 	if(argc != 3)
 	{
 		printf("Wrong ARGUMENT\n");
 		return (1);
 	}
-
-	pid = atoi(argv[1]);
-	if (!pid)
+	data.pid_server = atoi(argv[1]);
+	if (!data.pid_server)
 	{
 		printf("It is not a PID number\n");
 		return (1);
 	}
+	/* INITIALISATION -------------------------------- */
+	init_data(&data);
+	data.size_stream = (unsigned int)ft_strlen(argv[2]);
 
-	send_string(argv[2], pid, &data);
+	/* ENVOI DE DONNEES ------------------------------ */
+	printf("PID client: %u\n", data.pid_client);
+	printf("PID client: %#010x\n", data.pid_client);
 
-	// byte_c = 'A';
-	// byte = (int)byte_c;
-	// send_char(byte, pid, &data);
+	// printf("Size Stream: %u\n", data.size_stream);
 
+	send_pid_client(data.pid_client, &data);
+	// send_size_stream(data.size_stream, &data);
+	// send_string(argv[2], data.pid_server, &data);
+
+
+	/* ----------------------------------------------- */
 	return (0);
 }
 

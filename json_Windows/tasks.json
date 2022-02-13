@@ -3,20 +3,14 @@
 	"tasks": [
 		{
 			"type": "cppbuild",
-			"label": "C/C++: clang build active file",
-			"command": "/usr/bin/clang",
+			"label": "C/C++: gcc build active file",
+			"command": "/usr/bin/gcc",
 			"args": [
 				"-fdiagnostics-color=always",
 				"-g",
 				"*.c",
-				"-Wall",
-				"-Wextra",
-				"-Werror",
-				"-L.",
-				"-lft",
 				"-o",
-				// "${fileDirname}/${fileBasenameNoExtension}"
-				"${fileDirname}/client"
+				"${fileDirname}/${fileBasenameNoExtension}"
 			],
 			"options": {
 				"cwd": "${fileDirname}"
@@ -28,7 +22,7 @@
 				"kind": "build",
 				"isDefault": true
 			},
-			"detail": "compiler: /usr/bin/clang"
+			"detail": "compiler: /usr/bin/gcc"
 		}
 	]
 }

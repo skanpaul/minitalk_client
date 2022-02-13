@@ -1,47 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_bit_from_char.c                                 :+:      :+:    :+:   */
+/*   send_size_stream.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ski <marvin@42lausanne.ch>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 18:14:42 by ski               #+#    #+#             */
-/*   Updated: 2022/02/11 18:14:44 by ski              ###   ########.fr       */
+/*   Created: 2022/02/13 13:56:24 by ski               #+#    #+#             */
+/*   Updated: 2022/02/13 13:56:26 by ski              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "client.h"
 
 /* ************************************************************************** */
-void send_char(int byte, int pid_server, t_data *data)
+void	send_size_stream(unsigned int size_stream, t_data *data)
 {
-	int mask;
-	int result;
-	int i;
-	int us;
 
-	us = data->us;
-
-	mask = MASK_BIT_7;
-	i = 7;
-	while (i >= 0)
-	{
-		result = byte & mask;
-		if (!result)
-		{
-			kill(pid_server, SIGUSR1);
-			printf("0");
-		}
-		else
-		{
-			kill(pid_server, SIGUSR2);
-			printf("1");
-		}	
-		usleep(us);
-		mask >>= 1;
-		i--;
-	}
-	printf("\n");
-
+	char	*str_size_stream;	
+	str_size_stream = ft_itoa(size_stream);	
+	send_string(str_size_stream, data->pid_server, data);	
 	return ;
 }
-/* ************************************************************************** */
+
+
+

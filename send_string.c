@@ -12,9 +12,6 @@
 #include "client.h"
 
 /* ************************************************************************** */
-static int ft_strlen(char *str);
-
-/* ************************************************************************** */
 void	send_string(char *str, int pid, t_data *data)
 {
     int len;
@@ -28,18 +25,4 @@ void	send_string(char *str, int pid, t_data *data)
         i++;
     }
     // send_char(str[i], pid, data);
-}
-/* ************************************************************************** */
-static int ft_strlen(char *str)
-{
-    int i;
-    
-    if (!str)
-        return (0);
-
-    i = 0;
-    while(str[i] != '\0')
-        i++;
-
-    return (i);
 }
