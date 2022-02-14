@@ -33,13 +33,8 @@ typedef struct s_data
 {
 	struct sigaction	sa;
 	unsigned int		pid_server;
-
 	unsigned int		pid_client;
-	char 				str_pid_client[5];
-
 	unsigned int		size_stream;
-	char 				str_size_stream[5];
-
 	unsigned int		us;
 }	t_data;
 /* ************************************************************************** */
@@ -49,7 +44,5 @@ void	init_data(t_data *data);
 void	stream_out_char(int byte, int pid_server, t_data *data);
 void	stream_out_int(int int_value, t_data *data);
 void	stream_out_string(char *str, int pid_server, t_data *data);
-
 /* ************************************************************************** */
 #endif
-

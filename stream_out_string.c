@@ -14,15 +14,14 @@
 /* ************************************************************************** */
 void	stream_out_string(char *str, int pid_server, t_data *data)
 {
-    int len;
-    int i;
+	int	len;
+	int	i;
 
-    len = ft_strlen(str);
-    i = 0;
-    while (i < len)
-    {
-        stream_out_char((int)str[i], pid_server, data);
-        i++;
-    }
-    // send_char(str[i], pid, data);
+	len = ft_strlen(str);
+	i = 0;
+	while (i < len)
+	{
+		stream_out_char((int)str[i], pid_server, data);
+		i++;
+	}
 }

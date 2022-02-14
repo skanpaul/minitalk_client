@@ -14,29 +14,23 @@
 /* ************************************************************************** */
 void	stream_out_int(int int_value, t_data *data)
 {
-	int temp;
+	int	temp;
 
 	temp = int_value;
 	temp >>= 24;
 	temp = temp & 0x000000FF;
 	stream_out_char(temp, data->pid_server, data);
-
 	temp = int_value;
 	temp >>= 16;
 	temp = temp & 0x000000FF;
 	stream_out_char(temp, data->pid_server, data);
-
 	temp = int_value;
 	temp >>= 8;
 	temp = temp & 0x000000FF;
 	stream_out_char(temp, data->pid_server, data);
-
 	temp = int_value;
 	temp >>= 0;
 	temp = temp & 0x000000FF;
-	stream_out_char(temp, data->pid_server, data);	
-
+	stream_out_char(temp, data->pid_server, data);
 	return ;
 }
-
-

@@ -7,14 +7,18 @@ RM		= rm -f
 LIBFTPATH = .
 LIBFTNAME = ft
 
-HD		= $(wildcard *.h)
-SRC		= $(wildcard *.c)
+HD		= client.h
+SRC		= client.c \
+			init_data.c \
+			stream_out_char.c \
+			stream_out_int.c \
+			stream_out_string.c
+
 OBJ		= $(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ) $(HD)
-# $(CC) $(CFLAG) $(OBJ) -o $(NAME)
 	$(CC) $(CFLAG) -L$(LIBFTPATH) -l$(LIBFTNAME) $(OBJ) -o $(NAME)
 
 clean:
