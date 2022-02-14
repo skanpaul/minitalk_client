@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_data.c                                        :+:      :+:    :+:   */
+/*   init_data_client.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ski <marvin@42lausanne.ch>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -15,7 +15,7 @@
 // static void reset_str_int(char *str_int);
 
 /* ************************************************************************** */
-void	init_data(t_data *data)
+void	init_data_client(t_data *data)
 {
 	data->sa.sa_handler = &handler_sig_usr;
 	sigaddset(&data->sa.sa_mask, SIGUSR1);

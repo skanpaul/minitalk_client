@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 		ft_printf("It is not a PID number\n");
 		return (1);
 	}
-	init_data(&g_d);
+	init_data_client(&g_d);
 	sigaction(SIGUSR1, &g_d.sa, 0);
 	g_d.size_stream = ft_strlen(argv[2]);
 	stream_out_int(g_d.pid_client, &g_d);

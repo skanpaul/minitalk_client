@@ -39,7 +39,7 @@ typedef struct s_data
 }	t_data;
 /* ************************************************************************** */
 void	handler_sig_usr(int sig_c);
-void	init_data(t_data *data);
+void	init_data_client(t_data *data);
 
 void	stream_out_char(int byte, int pid_server, t_data *data);
 void	stream_out_int(int int_value, t_data *data);
